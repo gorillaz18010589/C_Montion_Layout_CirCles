@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <!--  設定特效
+      <Transition
+        motion:constraintSetEnd="@+id/end"               //設定綁定結束的的ConstraintSet,id
+        motion:constraintSetStart="@id/start"            //設定綁定開始的的ConstraintSet,id
+        motion:duration="3000">                          //設定特效持續時間
+       <KeyFrameSet>
+           <KeyPosition
+               motion:motionTarget="@+id/imgBall1"       //設定要使用特效的元件id
+               motion:framePosition="50"                 //從哪個時間點開始特效 50代表一半
+               motion:keyPositionType="parentRelative"   //設定特效座標類型
+               motion:percentX="0.5" />                  //參考特效縱向橫向的比例
+           <KeyPosition
+               motion:motionTarget="@+id/imgBall2"
+               motion:framePosition="50"
+               motion:keyPositionType="parentRelative"
+               motion:percentX="0.5" />
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/imgBall1" />     //設定按下去開始特效的id
+    </Transition>
+     -->
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="3000">
+        <KeyFrameSet>
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/imgBall1"
+                motion:percentX="0.5" />
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/imgBall2"
+                motion:percentX="0.5" />
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/imgBall1" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start"></ConstraintSet>
+
+    <!-- 特效結束後的元件設定
+       android:id="@+id/imgBall1" 依據此id設定要結束改變的樣子
+      -->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/imgBall1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="450dp"
+            motion:layout_constraintRight_toRightOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/imgBall2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="450dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintLeft_toLeftOf="parent" />
+    </ConstraintSet>
+
+</MotionScene>
